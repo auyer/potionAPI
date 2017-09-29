@@ -35,9 +35,15 @@ config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
 config :serverAPI, ServerAPI.Repo,
+  adapter: Sqlite.Ecto2,
+  database: "serverAPI.sqlite3"
+
+'''
+config :serverAPI, ServerAPI.Repo,
   adapter: Ecto.Adapters.MySQL,
   username: "elixir",
   password: "E1=Vv(1wg34t",
   database: "elixirAPI",
   hostname: "localhost",
   pool_size: 10
+'''

@@ -19,7 +19,7 @@ defmodule ServerAPI.Mixfile do
   def application do
     [mod: {ServerAPI, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :mariaex]]
+                    :phoenix_ecto, :sqlite_ecto2]]
   end
 
   # Specifies which paths to compile per environment.

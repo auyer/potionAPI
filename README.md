@@ -1,5 +1,47 @@
 # potionAPI Project,
-## [Being tested with [joaQUEEN project](https://github.com/auyer/joaQUEEN) ]
+
+## How it Works:
+
+This API will take Base64 encoded files as an argument in a JSON, metadata and the File Extension.
+
+	{
+		"file": "dGVzdApmaWxlCg==",
+		"metadata": {
+			"name" : "Test File"
+		},
+		"ext": "txt"
+	}
+	
+The API will store the file and return th URL in the JSON response.
+
+	[
+		{
+			"metadata": {
+				"name": "Test File"
+			},
+			"file": "/files/3038c41cbbb04aefbf48ed3fc3baeb2e.txt",
+			"ext": "txt"
+		}
+	]
+
+
+The available methods are:
+
+* #### GET "/files" :
+Will list all Files
+
+* #### GET "/file/:id"
+Will show all the info on a File with the provided ID
+	
+* #### POST "/file" with a valid JSON,
+will upload and create a new file.
+
+	
+* #### POST "/file/:id", FileController, :update
+Will update DATA on a existing file. ( This will not re-upload the file)
+	
+* #### DELETE "/file/:id", FileController, :delete
+Will delete a file with the provided ID
 
 ## Installing the Server
 
@@ -31,7 +73,7 @@ Then:
 
 ### Running:
 
-First Download the dependencies and preparate the database ( configured in configured in "serverAPI/config/dev.exs" )
+First Download the dependencies and create the database ( configured in configured in "serverAPI/config/dev.exs" )
 
 	mix deps.get
 	mix ecto.create

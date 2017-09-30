@@ -23,5 +23,7 @@ serverAPI/priv/static/*
 # variables.
 serverAPI/config/prod.secret.exs
 
+_build*
 .DS_Store
-
+serverAPI.sqlite3
+package-lock.json

@@ -21,10 +21,11 @@ defmodule ServerAPI.Router do
 
    scope "/api", ServerAPI do
      pipe_through :api
-   
-     get "/songs", SongsController, :index
-     get "/song/:id", SongsController, :show
-     post "/song", SongsController, :create
-     put "/song/:id", SongsController, :update
+
+     get "/files", FileController, :index
+     get "/file/:id", FileController, :show
+     post "/file", FileController, :create
+     post "/file/:id", FileController, :update
+     delete "/file/:id", FileController, :delete
    end
 end

@@ -19,7 +19,7 @@ defmodule ServerAPI.Mixfile do
   def application do
     [mod: {ServerAPI, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :mariaex]]
+                    :phoenix_ecto, :sqlite_ecto2]]
   end
 
   # Specifies which paths to compile per environment.
@@ -33,11 +33,12 @@ defmodule ServerAPI.Mixfile do
     [{:phoenix, "~> 1.2.4"},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_ecto, "~> 3.0"},
-     {:mariaex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:uuid, "~> 1.1" },
+     {:sqlite_ecto2, "~> 2.2"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

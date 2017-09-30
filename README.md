@@ -1,4 +1,5 @@
-# JoaQUEEN Project
+# potionAPI Project,
+## [Being tested with [joaQUEEN project](https://github.com/auyer/joaQUEEN) ]
 
 ## Installing the Server
 

@@ -23,8 +23,8 @@ defmodule ServerAPI.Router do
      pipe_through :api
 
      get "/list", FileController, :list
-     get "/file/:id", FileController, :show
      post "/new", FileController, :create
+     get "/file/:id", FileController, :show
      post "/file/:id", FileController, :update
      delete "/file/:id", FileController, :delete
    end

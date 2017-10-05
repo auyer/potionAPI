@@ -11,7 +11,7 @@ defmodule ServerAPI.FileController do
   end
 
 
-  def index(conn, _params) do
+  def list(conn, _params) do
     files = Repo.all(ServerAPI.File)
     json conn_with_status(conn, files), files
   end
@@ -20,17 +20,17 @@ defmodule ServerAPI.FileController do
     files = Repo.get(ServerAPI.File, String.to_integer(id))
     json conn_with_status(conn, files), files
   end
-  """
-  def create(conn, params) do
-    changeset = ServerAPI.File.changeset(%ServerAPI.File{}, params)
-  case Repo.insert(changeset) do
-    {:ok, file} ->
-        IO.inspect(params)
-	     json conn |> put_status(:created), file
-    {:error, _changeset} ->
-	     json conn |> put_status(:bas_request), %{errors: ["Unable to add File"]}
-	  end
-  end
+
+  @doc """
+  Recieves connection and a JSON with the parameter, pass the encoded file to the StoreFile module, and adds the data to the database.
+
+  ## Examples
+
+      iex> create( conn, JSON_parameters)
+
+            Expected output  {conn, JSON}
+            Error output     {conn_with_status, reason}
+
   """
   def create(conn, params) do
     case Map.fetch(params, "file") do
@@ -52,6 +52,17 @@ defmodule ServerAPI.FileController do
     end
   end
 
+  @doc """
+  Recieves connection with a ID, and a JSON with the new parameters parameter.
+
+  ## Examples
+
+      iex> create( conn, JSON_parameters)
+
+            Expected output  {conn, JSON}
+            Error output     {conn_with_status, reason}
+
+  """
  def update(conn, %{"id" => id} = params) do
     file = Repo.get(ServerAPI.File, id)
     if file do

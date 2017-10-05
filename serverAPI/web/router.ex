@@ -13,18 +13,18 @@ defmodule ServerAPI.Router do
     plug :accepts, ["json"]
   end
 
-  #scope "/", ServerAPI do
-  #  pipe_through :browser # Use the default browser stack
+  scope "/files", ServerAPI do
+    pipe_through :browser # Use the default browser stack
 
   #  get "/", PageController, :index
-  #end
+  end
 
    scope "/api", ServerAPI do
      pipe_through :api
 
-     get "/files", FileController, :index
+     get "/list", FileController, :list
      get "/file/:id", FileController, :show
-     post "/file", FileController, :create
+     post "/new", FileController, :create
      post "/file/:id", FileController, :update
      delete "/file/:id", FileController, :delete
    end

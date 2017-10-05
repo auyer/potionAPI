@@ -1,4 +1,5 @@
-# potionAPI Project,
+# vialRackAPI Project,
+An elixir API for file serving and storage, also keeping its metadata in a Database.
 
 ## How it Works:
 

@@ -20,6 +20,7 @@ The API will store the file and return th URL in the JSON response.
 			"metadata": {
 				"name": "Test File"
 			},
+			"id": 1,
 			"file": "/files/3038c41cbbb04aefbf48ed3fc3baeb2e.txt",
 			"ext": "txt"
 		}

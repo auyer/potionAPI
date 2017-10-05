@@ -68,7 +68,7 @@ defmodule ServerAPI.FileController do
     if file do
       perform_update(conn, file, params)
     else
-      json conn |> put_status(:not_found),
+      json conn |> put_status(:bad_request),
                    %{errors: ["invalid file"]}
     end
   end
@@ -76,13 +76,19 @@ defmodule ServerAPI.FileController do
   def delete(conn, %{"id" => id} = params) do
     case Map.fetch(params, "file") do
       {:ok, file} ->
-        #ServerAPI.StoreFile.deleteFile(file)
-        Repo.get!(ServerAPI.File, id)
-          |> Repo.delete!
+
+				case Repo.get(ServerAPI.File, id) do
+					nil -> json conn |> put_status(:bad_request), %{errors: ["File not Found"]}
+					file ->
+						case Repo.delete(file) do
+							{:ok, _} -> IO.puts "Will Delete" #ServerAPI.StoreFile.deleteFile(file)
+							_ -> json conn |> put_status(:bad_request), %{errors: ["Unable to Delete File"]}
+						end
+				end
+
         json conn_with_status(conn, :ok), :ok
       _ ->
-        json conn |> put_status(:not_found),
-                     %{errors: ["invalid file"]}
+        json conn |> put_status(:bad_request), %{errors: ["invalid request"]}
     end
   end
 
@@ -93,8 +99,7 @@ defmodule ServerAPI.FileController do
       {:ok, file} ->
         json conn |> put_status(:ok), file
       {:error, _result} ->
-        json conn |> put_status(:bad_request),
-                     %{errors: ["unable to update file"]}
+        json conn |> put_status(:bad_request), %{errors: ["unable to update file"]}
     end
   end
 end

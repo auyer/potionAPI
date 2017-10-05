@@ -7,7 +7,12 @@ defmodule ServerAPI.File do
 			|> unique_constraint(:id)
 	end
 
-	@derive {Poison.Encoder, only: [:file, :metadata, :ext]}
+#	def getID(model)
+#		import Ecto.Query
+#		file = ServerAPI.File.undeleted(
+#		)
+
+	@derive {Poison.Encoder, only: [:id, :file, :metadata, :ext]}
 	schema "File" do
 		field :file, :string
 		field :metadata, :map

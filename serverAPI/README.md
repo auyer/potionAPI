@@ -6,10 +6,11 @@ An elixir API for file serving and storage, also keeping its metadata in a Datab
 This API will take Base64 encoded files as an argument in a JSON, metadata and the File Extension.
 
 	{
-		"file": "dGVzdApmaWxlCg==",
 		"metadata": {
-			"name" : "Test File"
+			"name" : "Test File",
+			"type" : "Anything you want"
 		},
+		"file": "dGVzdApmaWxlCg==",
 		"ext": "txt"
 	}
 
@@ -18,7 +19,8 @@ The API will store the file and return th URL in the JSON response.
 	[
 		{
 			"metadata": {
-				"name": "Test File"
+				"name": "Test File",
+				"type" : "Anything you want"
 			},
 			"id": 1,
 			"file": "/files/3038c41cbbb04aefbf48ed3fc3baeb2e.txt",

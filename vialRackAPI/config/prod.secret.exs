@@ -8,13 +8,13 @@ use Mix.Config
 # file or create a script for recreating it, since it's
 # kept out of version control and might be hard to recover
 # or recreate for your teammates (or you later on).
-config :serverAPI, ServerAPI.Endpoint,
+config :vialRackAPI, vialRackAPI.Endpoint,
   secret_key_base: "gxLL2haHDS7beZ9lw2S3yPoiQBSvdo7Z+kA5rhFqzoMtbeGOyh6c8wepprYCikq8"
 
 # Configure your database
-config :serverAPI, ServerAPI.Repo,
+config :vialRackAPI, vialRackAPI.Repo,
   adapter: Ecto.Adapters.MySQL,
   username: "root",
   password: "",
-  database: "serverapi_prod",
+  database: "vialRackAPI_prod",
   pool_size: 20

@@ -76,14 +76,14 @@ Then:
 
 ### Running:
 
-First Download the dependencies and create the database ( configured in configured in "serverAPI/config/dev.exs" )
+First Download the dependencies and create the database ( configured in configured in "vialRackAPI/config/dev.exs" )
 
 	mix deps.get
 	mix ecto.create
 
 We are all set! Run your Phoenix application:
 
-	cd serverAPI
+	cd vialRackAPI
 	mix phoenix.server
 
 You can also run your app inside IEx (Interactive Elixir) as:

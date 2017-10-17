@@ -1,5 +1,5 @@
-defmodule ServerAPI.FileController do
-  use ServerAPI.Web, :controller
+defmodule VialRackAPI.FileController do
+  use VialRackAPI.Web, :controller
 
   defp conn_with_status(conn, nil) do
     conn
@@ -12,12 +12,12 @@ defmodule ServerAPI.FileController do
 
 
   def list(conn, _params) do
-    files = Repo.all(ServerAPI.File)
+    files = Repo.all(VialRackAPI.File)
     json conn_with_status(conn, files), files
   end
 
   def show(conn, %{"id" => id}) do
-    files = Repo.get(ServerAPI.File, String.to_integer(id))
+    files = Repo.get(VialRackAPI.File, String.to_integer(id))
     json conn_with_status(conn, files), files
   end
 
@@ -35,9 +35,9 @@ defmodule ServerAPI.FileController do
   def create(conn, params) do
     case Map.fetch(params, "file") do
       {:ok, file} ->
-        case ServerAPI.StoreFile.upload(file, Map.fetch(params, "ext")) do
+        case VialRackAPI.StoreFile.upload(file, Map.fetch(params, "ext")) do
           {:ok, url} ->
-            changeset = ServerAPI.File.changeset(%ServerAPI.File{}, Map.replace(params, "file", url))
+            changeset = VialRackAPI.File.changeset(%VialRackAPI.File{}, Map.replace(params, "file", url))
             case Repo.insert(changeset) do
               {:ok, file} ->
                  json conn |> put_status(:created), file
@@ -64,7 +64,7 @@ defmodule ServerAPI.FileController do
 
   """
  def update(conn, %{"id" => id} = params) do
-    file = Repo.get(ServerAPI.File, id)
+    file = Repo.get(VialRackAPI.File, id)
     if file do
       perform_update(conn, file, params)
     else
@@ -77,11 +77,11 @@ defmodule ServerAPI.FileController do
     case Map.fetch(params, "file") do
       {:ok, file} ->
 
-				case Repo.get(ServerAPI.File, id) do
+				case Repo.get(VialRackAPI.File, id) do
 					nil -> json conn |> put_status(:bad_request), %{errors: ["File not Found"]}
 					file ->
 						case Repo.delete(file) do
-							{:ok, _} -> IO.puts "Will Delete" #ServerAPI.StoreFile.deleteFile(file)
+							{:ok, _} -> IO.puts "Will Delete" #VialRackAPI.StoreFile.deleteFile(file)
 							_ -> json conn |> put_status(:bad_request), %{errors: ["Unable to Delete File"]}
 						end
 				end
@@ -94,7 +94,7 @@ defmodule ServerAPI.FileController do
 
 
  defp perform_update(conn, file, params) do
-    changeset = ServerAPI.File.changeset(file, params)
+    changeset = VialRackAPI.File.changeset(file, params)
     case Repo.update(changeset) do
       {:ok, file} ->
         json conn |> put_status(:ok), file

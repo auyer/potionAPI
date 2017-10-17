@@ -1,5 +1,5 @@
-defmodule ServerAPI.Router do
-	use ServerAPI.Web, :router
+defmodule VialRackAPI.Router do
+	use VialRackAPI.Web, :router
 
 	pipeline :browser do
 		plug :accepts, ["html"]
@@ -14,7 +14,7 @@ defmodule ServerAPI.Router do
 		plug :accepts, ["json"]
 	end
 
-	scope "/api", ServerAPI do
+	scope "/api", VialRackAPI do
 	 pipe_through :api
 
 	 get "/list", FileController, :list

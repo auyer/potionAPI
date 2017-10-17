@@ -1,12 +1,12 @@
-defmodule ServerAPI.Web do
+defmodule VialRackAPI.Web do
 	@moduledoc """
 	A module that keeps using definitions for controllers,
 	views and so on.
 
 	This can be used in your application as:
 
-			use ServerAPI.Web, :controller
-			use ServerAPI.Web, :view
+			use VialRackAPI.Web, :controller
+			use VialRackAPI.Web, :view
 
 	The definitions below will be executed for every view,
 	controller, etc, so keep them short and clean, focused
@@ -30,12 +30,12 @@ defmodule ServerAPI.Web do
 		quote do
 			use Phoenix.Controller
 
-			alias ServerAPI.Repo
+			alias VialRackAPI.Repo
 			import Ecto
 			import Ecto.Query
 
-			import ServerAPI.Router.Helpers
-			import ServerAPI.Gettext
+			import VialRackAPI.Router.Helpers
+			import VialRackAPI.Gettext
 		end
 	end
 
@@ -49,9 +49,9 @@ defmodule ServerAPI.Web do
 			# Use all HTML functionality (forms, tags, etc)
 			use Phoenix.HTML
 
-			import ServerAPI.Router.Helpers
-			import ServerAPI.ErrorHelpers
-			import ServerAPI.Gettext
+			import VialRackAPI.Router.Helpers
+			import VialRackAPI.ErrorHelpers
+			import VialRackAPI.Gettext
 		end
 	end
 
@@ -65,10 +65,10 @@ defmodule ServerAPI.Web do
 		quote do
 			use Phoenix.Channel
 
-			alias ServerAPI.Repo
+			alias VialRackAPI.Repo
 			import Ecto
 			import Ecto.Query
-			import ServerAPI.Gettext
+			import VialRackAPI.Gettext
 		end
 	end
 

@@ -1,5 +1,5 @@
-defmodule ServerAPI.ErrorView do
-	use ServerAPI.Web, :view
+defmodule VialRackAPI.ErrorView do
+	use VialRackAPI.Web, :view
 
 	def render("404.html", _assigns) do
 		"Page not found"

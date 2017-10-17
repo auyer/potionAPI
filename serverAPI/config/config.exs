@@ -6,15 +6,15 @@
 use Mix.Config
 
 # General application configuration
-config :serverAPI,
-  ecto_repos: [ServerAPI.Repo]
+config :VialRackAPI,
+  ecto_repos: [VialRackAPI.Repo]
 
 # Configures the endpoint
-config :serverAPI, ServerAPI.Endpoint,
+config :VialRackAPI, VialRackAPI.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "GbtQ9/HE/8nhkCfYYEhuwVdFnENtWzMiZevbnoXwPMUFfasksU08grQBc2eUBlst",
-  render_errors: [view: ServerAPI.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: ServerAPI.PubSub,
+  render_errors: [view: VialRackAPI.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: VialRackAPI.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

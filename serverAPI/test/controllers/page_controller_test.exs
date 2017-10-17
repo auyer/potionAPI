@@ -1,5 +1,5 @@
-defmodule ServerAPI.PageControllerTest do
-  use ServerAPI.ConnCase
+defmodule VialRackAPI.PageControllerTest do
+  use VialRackAPI.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

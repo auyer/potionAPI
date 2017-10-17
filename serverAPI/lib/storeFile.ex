@@ -1,4 +1,4 @@
-defmodule ServerAPI.StoreFile do
+defmodule VialRackAPI.StoreFile do
 
 	@moduledoc """
 	Responsible for managing files (Uploading and deletion).

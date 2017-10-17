@@ -1,4 +1,4 @@
-defmodule ServerAPI.ChannelCase do
+defmodule VialRackAPI.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,22 +20,22 @@ defmodule ServerAPI.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias ServerAPI.Repo
+      alias VialRackAPI.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
 
       # The default endpoint for testing
-      @endpoint ServerAPI.Endpoint
+      @endpoint VialRackAPI.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ServerAPI.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(VialRackAPI.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(ServerAPI.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(VialRackAPI.Repo, {:shared, self()})
     end
 
     :ok

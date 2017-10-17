@@ -1,4 +1,4 @@
-defmodule ServerAPI.ErrorHelpers do
+defmodule VialRackAPI.ErrorHelpers do
 	@moduledoc """
 	Conveniences for translating and building error messages.
 	"""
@@ -32,9 +32,9 @@ defmodule ServerAPI.ErrorHelpers do
 		#     dgettext "errors", "is invalid"
 		#
 		if count = opts[:count] do
-			Gettext.dngettext(ServerAPI.Gettext, "errors", msg, msg, count, opts)
+			Gettext.dngettext(VialRackAPI.Gettext, "errors", msg, msg, count, opts)
 		else
-			Gettext.dgettext(ServerAPI.Gettext, "errors", msg, opts)
+			Gettext.dgettext(VialRackAPI.Gettext, "errors", msg, opts)
 		end
 	end
 end

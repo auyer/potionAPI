@@ -1,5 +1,5 @@
-defmodule ServerAPI.File do
-	use ServerAPI.Web, :model
+defmodule VialRackAPI.File do
+	use VialRackAPI.Web, :model
 
 	def changeset(model, params \\ :empty) do
 		model
@@ -9,7 +9,7 @@ defmodule ServerAPI.File do
 
 #	def getID(model)
 #		import Ecto.Query
-#		file = ServerAPI.File.undeleted(
+#		file = VialRackAPI.File.undeleted(
 #		)
 
 	@derive {Poison.Encoder, only: [:id, :file, :metadata, :ext]}

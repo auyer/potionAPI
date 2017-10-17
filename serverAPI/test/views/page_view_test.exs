@@ -1,3 +1,3 @@
-defmodule ServerAPI.PageViewTest do
-  use ServerAPI.ConnCase, async: true
+defmodule VialRackAPI.PageViewTest do
+  use VialRackAPI.ConnCase, async: true
 end

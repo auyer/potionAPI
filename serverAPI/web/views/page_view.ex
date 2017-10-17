@@ -1,3 +1,3 @@
-defmodule ServerAPI.PageView do
-	use ServerAPI.Web, :view
+defmodule VialRackAPI.PageView do
+	use VialRackAPI.Web, :view
 end

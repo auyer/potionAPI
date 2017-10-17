@@ -1,14 +1,14 @@
-defmodule ServerAPI.Endpoint do
-  use Phoenix.Endpoint, otp_app: :serverAPI
+defmodule VialRackAPI.Endpoint do
+  use Phoenix.Endpoint, otp_app: :VialRackAPI
 
-  socket "/socket", ServerAPI.UserSocket
+  socket "/socket", VialRackAPI.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/static", from: :serverAPI, gzip: false,
+    at: "/static", from: :VialRackAPI, gzip: false,
     only: ~w(css files fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -35,8 +35,8 @@ defmodule ServerAPI.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session,
     store: :cookie,
-    key: "_serverAPI_key",
+    key: "_VialRackAPI_key",
     signing_salt: "p9kEN6Od"
 
-  plug ServerAPI.Router
+  plug VialRackAPI.Router
 end

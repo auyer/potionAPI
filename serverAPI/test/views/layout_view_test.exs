@@ -1,3 +1,3 @@
-defmodule ServerAPI.LayoutViewTest do
-  use ServerAPI.ConnCase, async: true
+defmodule VialRackAPI.LayoutViewTest do
+  use VialRackAPI.ConnCase, async: true
 end

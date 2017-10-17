@@ -1,4 +1,4 @@
-defmodule ServerAPI.ModelCase do
+defmodule VialRackAPI.ModelCase do
   @moduledoc """
   This module defines the test case to be used by
   model tests.
@@ -16,20 +16,20 @@ defmodule ServerAPI.ModelCase do
 
   using do
     quote do
-      alias ServerAPI.Repo
+      alias VialRackAPI.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import ServerAPI.ModelCase
+      import VialRackAPI.ModelCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ServerAPI.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(VialRackAPI.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(ServerAPI.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(VialRackAPI.Repo, {:shared, self()})
     end
 
     :ok
@@ -59,7 +59,7 @@ defmodule ServerAPI.ModelCase do
   """
   def errors_on(struct, data) do
     struct.__struct__.changeset(struct, data)
-    |> Ecto.Changeset.traverse_errors(&ServerAPI.ErrorHelpers.translate_error/1)
+    |> Ecto.Changeset.traverse_errors(&VialRackAPI.ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
   end
 end

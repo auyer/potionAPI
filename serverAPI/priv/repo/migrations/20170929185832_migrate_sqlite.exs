@@ -1,4 +1,4 @@
-defmodule ServerAPI.Repo.Migrations.CreateFiles do
+defmodule VialRackAPI.Repo.Migrations.CreateFiles do
 	use Ecto.Migration
 
 	def change do

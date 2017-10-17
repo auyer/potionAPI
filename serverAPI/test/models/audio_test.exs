@@ -1,7 +1,7 @@
-defmodule ServerAPI.AudioTest do
-  use ServerAPI.ModelCase
+defmodule VialRackAPI.AudioTest do
+  use VialRackAPI.ModelCase
 
-  alias ServerAPI.Audio
+  alias VialRackAPI.Audio
 
   @valid_attrs %{artist: "some content", filename: "some content", genre: "some content", path: "some content", title: "some content"}
   @invalid_attrs %{}

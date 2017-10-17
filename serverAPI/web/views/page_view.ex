@@ -1,3 +1,3 @@
 defmodule ServerAPI.PageView do
-  use ServerAPI.Web, :view
+	use ServerAPI.Web, :view
 end

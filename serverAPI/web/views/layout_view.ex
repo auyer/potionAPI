@@ -1,3 +1,3 @@
 defmodule ServerAPI.LayoutView do
-  use ServerAPI.Web, :view
+	use ServerAPI.Web, :view
 end

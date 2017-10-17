@@ -7,24 +7,24 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
 config :serverAPI, ServerAPI.Endpoint,
-  http: [port: 4000],
-  debug_errors: true,
-  code_reloader: true,
-  check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-                    cd: Path.expand("../", __DIR__)]]
+	http: [port: 4000],
+	debug_errors: true,
+	code_reloader: true,
+	check_origin: false,
+	watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
+										cd: Path.expand("../", __DIR__)]]
 
 
 # Watch static and templates for browser reloading.
 config :serverAPI, ServerAPI.Endpoint,
-  live_reload: [
-    patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
-      ~r{priv/gettext/.*(po)$},
-      ~r{web/views/.*(ex)$},
-      ~r{web/templates/.*(eex)$}
-    ]
-  ]
+	live_reload: [
+		patterns: [
+			~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+			~r{priv/gettext/.*(po)$},
+			~r{web/views/.*(ex)$},
+			~r{web/templates/.*(eex)$}
+		]
+	]
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
@@ -35,14 +35,14 @@ config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
 config :serverAPI, ServerAPI.Repo,
-  adapter: Sqlite.Ecto2,
-  database: "serverAPI.sqlite3"
+	adapter: Sqlite.Ecto2,
+	database: "serverAPI.sqlite3"
 '''
 config :serverAPI, ServerAPI.Repo,
-  adapter: Ecto.Adapters.MySQL,
-  username: "elixir",
-  password: "E1=Vv(1wg34t",
-  database: "elixirAPI",
-  hostname: "localhost",
-  pool_size: 10
-  '''
+	adapter: Ecto.Adapters.MySQL,
+	username: "elixir",
+	password: "E1=Vv(1wg34t",
+	database: "elixirAPI",
+	hostname: "localhost",
+	pool_size: 10
+	'''

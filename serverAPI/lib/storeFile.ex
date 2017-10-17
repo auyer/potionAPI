@@ -22,7 +22,7 @@ defmodule ServerAPI.StoreFile do
 		{:ok, binary} ->
 			filename = unique_filename(ext)
 			case File.write("priv/static/files/" <> filename, binary) do
-				:ok -> {:ok, "/files/" <> filename}
+				:ok -> {:ok, "/static/files/" <> filename}
 				{:error, reason}-> {:error, reason}
 			end
 		{:error} -> {:error,"Error Converting from Base 64"}

@@ -6,20 +6,23 @@ An elixir API for file serving and storage, also keeping its metadata in a Datab
 This API will take Base64 encoded files as an argument in a JSON, metadata and the File Extension.
 
 	{
-		"file": "dGVzdApmaWxlCg==",
 		"metadata": {
-			"name" : "Test File"
+			"name" : "Test File",
+			"type" : "Anything you want"
 		},
+		"file": "dGVzdApmaWxlCg==",
 		"ext": "txt"
 	}
-	
+
 The API will store the file and return th URL in the JSON response.
 
 	[
 		{
 			"metadata": {
-				"name": "Test File"
+				"name": "Test File",
+				"type" : "Anything you want"
 			},
+			"id": 1,
 			"file": "/files/3038c41cbbb04aefbf48ed3fc3baeb2e.txt",
 			"ext": "txt"
 		}
@@ -28,20 +31,19 @@ The API will store the file and return th URL in the JSON response.
 
 The available methods are:
 
-* #### GET "/files" :
+* #### GET "/api/list" :
 Will list all Files
 
-* #### GET "/file/:id"
-Will show all the info on a File with the provided ID
-	
-* #### POST "/file" with a valid JSON,
+* #### POST "/api/new" with a valid JSON,
 will upload and create a new file.
 
-	
-* #### POST "/file/:id", FileController, :update
+* #### GET "/api/file/:id"
+Will show all the info on a File with the provided ID
+
+* #### POST "/file/:id"
 Will update DATA on a existing file. ( This will not re-upload the file)
-	
-* #### DELETE "/file/:id", FileController, :delete
+
+* #### DELETE "/file/:id"
 Will delete a file with the provided ID
 
 ## Installing the Server

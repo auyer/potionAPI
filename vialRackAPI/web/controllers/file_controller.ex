@@ -63,7 +63,7 @@ defmodule VialRackAPI.FileController do
             Error output     {conn_with_status, reason}
 
   """
- def update(conn, %{"id" => id} = params) do
+  def update(conn, %{"id" => id} = params) do
     file = Repo.get(VialRackAPI.File, id)
     if file do
       perform_update(conn, file, params)
@@ -73,22 +73,15 @@ defmodule VialRackAPI.FileController do
     end
   end
 
-  def delete(conn, %{"id" => id} = params) do
-    case Map.fetch(params, "file") do
-      {:ok, file} ->
-
-				case Repo.get(VialRackAPI.File, id) do
-					nil -> json conn |> put_status(:bad_request), %{errors: ["File not Found"]}
-					file ->
-						case Repo.delete(file) do
-							{:ok, _} -> IO.puts "Will Delete" #VialRackAPI.StoreFile.deleteFile(file)
-							_ -> json conn |> put_status(:bad_request), %{errors: ["Unable to Delete File"]}
-						end
-				end
-
-        json conn_with_status(conn, :ok), :ok
-      _ ->
-        json conn |> put_status(:bad_request), %{errors: ["invalid request"]}
+  def delete(conn, %{"id" => id}) do
+    with {:get, file} when not is_nil(file) <- {:get, Repo.get(VialRackAPI.File, id)},
+         {:repo_delete, {:ok, _}} <- {:repo_delete, Repo.delete(file)},
+         {:disc_delete, :ok} <- {:disc_delete, VialRackAPI.StoreFile.delete(file)} do
+      json conn |> put_status(204), nil
+    else
+      {:get, nil} -> json conn |> put_status(:bad_request), %{errors: ["File not Found"]}
+      {:repo_delete, _} -> json conn |> put_status(:bad_request), %{errors: ["Unable to Delete File"]}
+      {:disc_delete, _} -> json conn |> put_status(:bad_request), %{errors: ["Unable to Delete File"]}
     end
   end
 
